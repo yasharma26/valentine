@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Yay! ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu:wght@300;400&family=Quicksand:wght@300;500&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+    
+    <style>
+        body {
+            background-image: url('bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-color: #fffafb;
+            font-family: 'Quicksand', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 40px;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            text-align: center;
+            max-width: 80%;
+        }
+
+        h1 {
+            font-family: 'Gaegu', cursive;
+            font-size: 60px;
+            font-weight: 300;
+            color: #d63384;
+            margin: 0 0 15px 0;
+        }
+
+        p {
+            font-size: 26px;
+            color: #555;
+            margin: 0;
+            font-weight: 300;
+        }
+
+        .celebration-img {
+            width: 280px;
+            border-radius: 25px;
+            margin-bottom: 25px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-card">
+        <img src="yes.gif" alt="Yay!" class="celebration-img"> 
+        <h1>Hooraayyyyy!!!</h1>
+        <p>I Love You 3000 my cupcake! ❤️</p>
+    </div>
+
+    <script>
+        window.onload = function() {
+            var duration = 5 * 1000;
+            var animationEnd = Date.now() + duration;
+            var defaults = { startVelocity: 30, spread: 360, ticks: 60, zIndex: 0 };
+
+            function randomInRange(min, max) {
+              return Math.random() * (max - min) + min;
+            }
+
+            var interval = setInterval(function() {
+              var timeLeft = animationEnd - Date.now();
+              if (timeLeft <= 0) return clearInterval(interval);
+
+              var particleCount = 50 * (timeLeft / duration);
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.1, 0.3), y: Math.random() - 0.2 } }));
+              confetti(Object.assign({}, defaults, { particleCount, origin: { x: randomInRange(0.7, 0.9), y: Math.random() - 0.2 } }));
+            }, 250);
+        };
+    </script>
+</body>
+</html>
